@@ -78,8 +78,8 @@ const DetailBox: React.FC<CountryData> = ({ country }) => {
               <Text display='flex'>
                 Languages:{' '}
                 <VStack marginLeft={2} spacing='0'>
-                  {country.languages.map((language) => (
-                    <Link key={language.name}>{language.name} </Link>
+                  {country.languages.map((language, index) => (
+                    <Link key={`${index}_ ${language}`}>{language.name} </Link>
                   ))}
                 </VStack>
               </Text>
