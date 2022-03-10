@@ -14,7 +14,7 @@ const Navbar = () => {
   const color = useColorModeValue('lightText', 'darkText');
 
   return (
-    <Container maxW='container.xl' bgColor={bg}>
+    <Container minW={"100%"} bgColor={bg}>
       <Container
         maxW='container.lg'
         display='flex'
