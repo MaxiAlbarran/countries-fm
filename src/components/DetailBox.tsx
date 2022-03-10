@@ -25,8 +25,18 @@ const DetailBox: React.FC<CountryData> = ({ country }) => {
 
   return (
     <>
-      <Stack display='flex' flexDirection={["column", "column", "row", "row"]} color='#000' spacing={[10, 10, 0, 0]}>
-        <Stack flex={1} display='flex' justify='center' align={["center","center"]}>
+      <Stack
+        display='flex'
+        flexDirection={['column', 'column', 'row', 'row']}
+        color='#000'
+        spacing={[10, 10, 0, 0]}
+      >
+        <Stack
+          flex={1}
+          display='flex'
+          justify='center'
+          align={['center', 'center']}
+        >
           <Image
             src={country.flags['svg']}
             alt='flag'
@@ -42,36 +52,44 @@ const DetailBox: React.FC<CountryData> = ({ country }) => {
 
           <Stack
             color={color}
-            display='flex' justify='space-between'
-            flexDirection={["column", "column", "row", "row"]}            
+            display='flex'
+            justify='space-between'
+            flexDirection={['column', 'column', 'row', 'row']}
             paddingY='5'
             spacing={[3, 3, 0, 0]}
-            fontWeight='600' fontSize='sm'
+            fontWeight='600'
+            fontSize='sm'
           >
             <Stack spacing='3'>
-              <Text >
-                Native name: <Link>{country.nativeName}</Link>
+              <Text>
+                Native name: <Text variant='data'>{country.nativeName}</Text>
               </Text>
               <Text>
-                Population: <Link>{country.population.toLocaleString()}</Link>
+                Population:{' '}
+                <Text variant='data'>
+                  {country.population.toLocaleString()}
+                </Text>
               </Text>
               <Text>
-                Region: <Link>{country.region}</Link>
+                Region: <Text variant='data'>{country.region}</Text>
               </Text>
               <Text>
-                Capital: <Link>{country.capital}</Link>
+                Capital: <Text variant='data'>{country.capital}</Text>
               </Text>
             </Stack>
 
             <Stack spacing='3'>
               <Text>
-                Top Level Domain: <Link>{country.topLevelDomain}</Link>
+                Top Level Domain:{' '}
+                <Text variant='data'>{country.topLevelDomain}</Text>
               </Text>
               <Text display='flex'>
                 Currencies:{' '}
                 <VStack marginLeft={2} spacing='0'>
                   {country.currencies.map((currency) => (
-                    <Link key={currency.name}>{currency.name} </Link>
+                    <Text variant='data' key={currency.name}>
+                      {currency.name}{' '}
+                    </Text>
                   ))}
                 </VStack>
               </Text>
@@ -79,14 +97,16 @@ const DetailBox: React.FC<CountryData> = ({ country }) => {
                 Languages:{' '}
                 <VStack marginLeft={2} spacing='0'>
                   {country.languages.map((language, index) => (
-                    <Link key={`${index}_ ${language}`}>{language.name} </Link>
+                    <Text variant='data' key={`${index}_ ${language}`}>
+                      {language.name}{' '}
+                    </Text>
                   ))}
                 </VStack>
               </Text>
             </Stack>
           </Stack>
 
-          {country.borders  && (
+          {country.borders && (
             <>
               <HStack spacing='5' display='flex' flexDirection='row'>
                 <Text fontWeight={600} size='sm' color={color}>
@@ -114,8 +134,6 @@ const DetailBox: React.FC<CountryData> = ({ country }) => {
               </HStack>
             </>
           )}
-
-
         </Stack>
       </Stack>
     </>

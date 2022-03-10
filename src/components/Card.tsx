@@ -21,8 +21,9 @@ const Card: React.FC<countryPreview> = ({data}) => {
 
 
   return (
-    <Link as={RouteLink} to={'/country/' + data.cca3} _focus={{borderColor: 'none'}}>
+ 
       <Box
+        as={RouteLink} to={'/country/' + data.cca3}
         width='225px'
         bgColor={bg}
         color={color}
@@ -43,18 +44,18 @@ const Card: React.FC<countryPreview> = ({data}) => {
 
           <Stack spacing={2} paddingBottom={6} fontSize='14px' fontWeight={600}>
             <Text>
-              Population: <Link>{data.population.toLocaleString()}</Link>
+              Population: <Text variant='data'>{data.population.toLocaleString()}</Text>
             </Text>
             <Text>
-              Region: <Link>{data.region}</Link>
+              Region: <Text variant='data'>{data.region}</Text>
             </Text>
             <Text>
-              Capital: <Link>{data.capital && data.capital[0]}</Link>
+              Capital: <Text variant='data'>{data.capital && data.capital[0]}</Text>
             </Text>
           </Stack>
         </Stack>
       </Box>
-    </Link>
+   
   );
 };
 

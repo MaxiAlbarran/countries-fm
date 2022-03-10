@@ -23,12 +23,14 @@ export default extendTheme({
 
   },
   components:{
-    Link:{
+    Text:{
       baseStyle:{
-        color:"gray.400",
-        cursor:"default",
-        _hover:{
-          textDecoration:"none"
+        display: 'flex',
+      },
+      variants:{
+        'data':{
+          color:"gray.400",
+          marginLeft:'5px'
         }
       }
     }
