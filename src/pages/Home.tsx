@@ -1,4 +1,10 @@
-import { useColorModeValue, Stack, Wrap, Spinner, Heading } from '@chakra-ui/react';
+import {
+  useColorModeValue,
+  Stack,
+  Wrap,
+  Spinner,
+  Heading,
+} from '@chakra-ui/react';
 
 import { useState } from 'react';
 
@@ -20,21 +26,19 @@ const Home = () => {
   let getByContinent: string = `https://restcountries.com/v3.1/region/${region}`;
   let getByName: string = `https://restcountries.com/v3.1/name/${countryName}`;
 
-  const sendURL = () => { 
-    if(countryName.length < 2){
-      if(region == 'all'){
+  const sendURL = () => {
+    if (countryName.length < 2) {
+      if (region == 'all') {
         return getAll;
-      }else{
+      } else {
         return getByContinent;
       }
-    }else{
+    } else {
       return getByName;
     }
-  } // Esta funcion controla la URL que se envia al customHook, la prioridad la tiene lo que ingrese el usuario en el input
+  }; // Esta funcion controla la URL que se envia al customHook, la prioridad la tiene lo que ingrese el usuario en el input
 
-  const { countries, loading } = useFetch(
-    sendURL()
-  );
+  const { countries, loading } = useFetch(sendURL());
 
   if (loading) {
     return (
@@ -49,18 +53,16 @@ const Home = () => {
     return (
       <>
         <MenuSearch changeRegion={setRegion} searchCountry={setCountryName} />
-        <Wrap spacing='7' align='center' justify='center' shouldWrapChildren>
-          {countries &&
-            countries.length &&
-            countries.map((item: Country) => (
-              <Card data={item} key={item.cca3} />
-            ))
-            }
-
-          {
-            !countries.length &&
-            <Heading color={color} fontWeight={800}>Not found!</Heading>
-          }
+        <Wrap spacing='6' align='center' justify='center' shouldWrapChildren>
+          {countries && countries.length ?
+             countries.map((item: Country) => (
+                <Card data={item} key={item.cca3} />
+              ))
+            : !countries.length && (
+                <Heading color={color} fontWeight={800}>
+                  Not found!
+                </Heading>
+              )}
         </Wrap>
       </>
     );
